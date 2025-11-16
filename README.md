@@ -7,8 +7,6 @@ A native iOS implementation of the classic 2048 sliding puzzle game, built entir
 ![SwiftUI](https://img.shields.io/badge/SwiftUI-3.0-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 
-## 📱 Screenshots
-
 ## ✨ Features
 
 - **Smooth Animations**: Fluid tile movements using SwiftUI's `matchedGeometryEffect`
