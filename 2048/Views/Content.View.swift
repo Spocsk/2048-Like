@@ -34,35 +34,26 @@ struct ContentView: View {
         VStack {
             Text("2048").font(Font.largeTitle).bold().fontWidth(.expanded)
                 .padding(.vertical, 50)
-            ForEach(self.game.tileGrid, id: \.self) { rowTiles in
-                HStack {
-                    ForEach(rowTiles, id: \.self) { tile in
-                        ZStack {
-                            RoundedRectangle(
-                                cornerRadius: 5,
-                                style: .continuous
-                            )
-                            .fill(.ultraThinMaterial)
-                            .background(
-                                self.game
-                                    .getColorFromTileValue(
-                                        tile.value
-                                    )
-                            )
-                            .frame(width: 90, height: 90)
-                            .padding(0)
-                            if !tile.isEmpty {
-                                Text("\(tile.value)").font(Font.largeTitle)
-                                    .bold()
-                                    .foregroundStyle(Color.black)
-                            }
-                        }
 
-                    }
+            let tiles = self.game.getAllTiltes()
+
+            ZStack {
+                GridLayout()
+                ForEach(tiles, id: \.self.id) { tile in
+                    TileView(
+                        tile: tile,
+                        bgColor: self.game.getColorFromTileValue(tile.value)
+                    )
+                    .position(
+                        x: CGFloat(tile.position.col) * 92 + 60,
+                        y: CGFloat(tile.position.row) * 92 + 78
+                    )
+
                 }
-                .padding(.vertical, 1)
-
             }
+            .padding()
+            
+
             Button("New Game") {
                 self.game.resetGame()
                 self.game.createRandomTile()

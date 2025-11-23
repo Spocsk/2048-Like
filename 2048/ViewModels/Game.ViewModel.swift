@@ -276,7 +276,11 @@ class GameViewModel: ObservableObject {
                 blue: 26.0 / 255.0
             )
         default:
-            return Color.gray
+            return Color(
+                red: 189.0 / 255.0,
+                green: 195.0 / 255.0,
+                blue: 199.0 / 255.0
+            ).opacity(0.2)
         }
     }
 
